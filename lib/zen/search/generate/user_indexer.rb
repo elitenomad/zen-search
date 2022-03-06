@@ -14,7 +14,8 @@ module Zen
           @name_index ||= {}
           @verfied_index ||= {
             true: [],
-            false: []
+            false: [],
+            nil: []
           }
         end
 
@@ -34,6 +35,7 @@ module Zen
         def for_verified!
           @users.each do |user|
             @verfied_index[:"#{user.verified}"] << user unless user.verified.nil?
+            @verfied_index[:nil] << user if user.verified.nil?
           end
         end
 

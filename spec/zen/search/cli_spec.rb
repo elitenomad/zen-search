@@ -44,7 +44,8 @@ RSpec.describe Zen::Search::CLI do
     end
   
     context ".run" do
-      # Testing this function requires a 
+      # As its interactive, Ignoring this method from testing
+      # All the in built classes are Unit tested. FYI 
     end
 
 end

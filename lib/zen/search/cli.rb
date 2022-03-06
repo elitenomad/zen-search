@@ -40,7 +40,7 @@ module Zen
         # setup indexes (user, ticket)
         indexer = Zen::Search::Generate::Indexer.new(@user_collection, @ticket_collection)
         uIndex, tIndex = indexer.index!
-
+        # binding.pry
         # Make indexes available to Main service class (Acts like a controller)
         @service = Zen::Search::Services::Core.new(uIndex, tIndex)
 
@@ -92,10 +92,9 @@ module Zen
             id = prompt.ask("Enter search value", default: "") do |q|
               q.required true
               q.validate(/\A\d+\Z/, "Invalid ID")
-              q.convert :int
             end
 
-            @service.display_user_by_id(id)
+            @service.display_user_by_id(id.to_i)
           when "name"
             name = prompt.ask("Enter search value") do |q|
               q.required true
@@ -106,7 +105,7 @@ module Zen
             date = prompt.ask("Enter search value", default: Date.today, convert: :date)
             @service.display_users_from_date(date)
           when "verified"
-            id = prompt.enum_select("Enter search value", choices = %w[true false], convert: :bool)
+            id = prompt.enum_select("Enter search value", choices = %w[true false nil], convert: :sym)
             @service.display_verified_users(id)
           end
         end
@@ -120,8 +119,8 @@ module Zen
 
             @service.display_ticket_by_id(id)
           when "type"
-            type = prompt.ask("Enter search value", default: "")
-            @service.display_tickets_by_type(type)
+            type = prompt.enum_select("Enter search value", choices = %w[incident problem question task nil])
+            @service.display_tickets_by_type(Zen::Search::Helpers.nillify_string(type))
           when "created_at"
             date = prompt.ask("Enter search value", default: Date.today, convert: :date)
             @service.display_tickets_from_date(date)
@@ -129,7 +128,7 @@ module Zen
             id = prompt.ask("Enter search value")
             @service.display_tickets_by_subject(id)
           when "assignee_id"
-            assignee_id = prompt.ask("Enter search value", default: "", convert: :int)
+            assignee_id = prompt.ask("Enter search value", default: nil, convert: :int)
             @service.display_tickets_by_assignee_id(assignee_id)
           when "tags"
             tag = prompt.ask("Enter search value", default: "")

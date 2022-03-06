@@ -140,16 +140,24 @@ rake spec
             - finding by Id O(1)
             - finding by Assignee ID O(1)
             - finding by Subject, Type O(1)
-            - finding by Tags O(1)
+            - finding by Tags O(1) 
+                - Empty tag records is not handled, have to create a new API method to return records with empty tags records
             - finding by created_at O(TotalNoOfTickets)
 - Command Line UI design is based on specification document.
 - Validations to the input are injected using `tty-prompt` gem internal methods
     - User
-        - ID can be a number and required
-        - Name is required field
-        - Verfied is bool field (t, f, true or false)
-        - Created_at default to Date.Today
+        - ID number, required
+        - Name is a string, Any value is accepted
+        - Verfied Enum field (true, false, nil)
+        - Created_at default to Date.Today. wrong format will complain on the command line (tty-prompt function)
     - Ticket
+        - ID string, Any value is accepted
+        - Assigne ID, Any number || nil is accepted
+        - Type Enum, [incident problem question task nil] values
+        - Subject string, Any value is accepted
+        - Tags Array(string) || []
+        - Created_at default to Date.Today. wrong format will complain on the command line (tty-prompt function)  
+
 - APIs where the value passed is nil and validations (TODO)
     - Ticket assigned ID blank
     - Tags are blank
@@ -178,6 +186,27 @@ rake spec
 - Rubocop script is manually run, could be automated onto git lifecycle hooks to run before we commit the code.
 
 ## Local terminal output
+
+- From project home directory run `./exe/simulator`
+<img src="./usage/start.png" alt="drawing" width="800"/>
+
+- Choose option `Search Zendesk` to query data
+<img src="./usage/search-zen.png" alt="drawing" width="800"/>
+
+- Choose option `Users` to view resource options
+<img src="./usage/users-options.png" alt="drawing" width="800"/>
+
+- Select option `Id` and provide a value (From above options)
+<img src="./usage/enter-id.png" alt="drawing" width="800"/>
+
+- Enter to view results
+
+<img src="./usage/user-results.png" alt="drawing" width="800"/>
+
+- Press `q` on your keyboard to exit out of `Results` view (Feature provided by `tty-pager`)
+# Simulator Demo
+
+Simulator demo is placed under usage/simulator-demo.mov (Please use Quickplayer to play it.)
 
 ## License
 

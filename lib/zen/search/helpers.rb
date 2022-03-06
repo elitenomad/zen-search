@@ -34,6 +34,11 @@ module Zen
           idx[token] << doc_id
         end
       end
+
+      def self.nillify_string(val)
+        return nil if val == "nil" || val == ""
+        return val
+      end
     end
   end
 end
