@@ -115,23 +115,48 @@ rake spec
 - Use `tty-table` to print the result in human readable format (Used :ascii option).
 - Use `pry` to debug the issues.
 - Use `rubocop` to maintain development standard guide.
-- When simulator is started
+- When simulator is started.
     - Loads the data
-    - Indexes the data (TODO)
+    - Update the collection classes to reflect relationship data.
+        - User has_many tickets
+        - Ticket belongs to a User
+    - Indexes the data
+        - UserIndex 
+        - TicketIndex
 - When an option is selected,
     - Lookup both the JSON files and combine the records and display (Brute force)
-    - Lookup for the right indexes and display the output (TODO)
+    - Lookup for the right indexes and display the output.
+        - Users
+            - finding by Id O(1)
+            - finding by name O(1) (depends :) the way input is provided)
+            - finding by verified O(1)
+            - finding by created_at O(TotalNoOfUsers)
+        - Tickets
+            - finding by Id O(1)
+            - finding by Assignee ID O(1)
+            - finding by Subject, Type O(1)
+            - finding by Tags O(1)
+            - finding by created_at O(TotalNoOfTickets)
 - Command Line UI design is based on specification document.
+- APIs where the value passed is nil and validations (TODO)
+    - Ticket assigned ID blank
+    - Tags are blank
+    - Type tickets
 
 ## Assumptions
 
 1. Limited to the datasets provided in the problem statement. Data with huge sizes are not explored
+2. Assumed all data will be provided in json format.
 2. Assumed all data can fit into memory on a single machine (Based on specification statement).
 3. Any file which has `users` is assumed to have users information.
 4. Any file which has `tickets` is assumed to have tickets information.
 5. State is not maintained with option selection in command line. For e.g you choose `View Searchable Fields => Users`, After
    output is displayed, the tool will reset to the first option of `Search Zendesk`
 6. Took liberty to establish relationship between entities. 
+7. Ensure Validations around the files and the attributes provided (TODO)
+8. Pagination is something i wanted to consider but ended up not implementing it in the end.
+9. Found it tricky to implement indexing for created_at, group by dates and write range queries. Due to limited time i am sticking with total lookup of the records 
+   when queried by date.
 
 ## Scope for Enhancement
 
