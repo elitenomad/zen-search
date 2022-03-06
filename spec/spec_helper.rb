@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require "zen/search"
+require "support/mock"
+require "support/stringio_patch"
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
