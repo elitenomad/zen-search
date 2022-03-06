@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # Had to add this fix as i was testing `tty-prompt` output in the specs/
 # https://github.com/piotrmurach/tty-screen/issues/11
 
-require 'stringio'
+require "stringio"
 
 unless StringIO.method_defined? :ioctl
   class StringIO

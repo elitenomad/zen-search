@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 # test.rb
-require 'pry'
+require "pry"
 require_relative "search/version"
 require "zen/search/users"
 require "zen/search/tickets"
@@ -18,7 +19,7 @@ require "zen/search/generate/user_indexer"
 require "zen/search/generate/ticket_indexer"
 require "zen/search/generate/indexer"
 require "zen/search/cli"
-require 'active_support/core_ext/hash/indifferent_access'
+require "active_support/core_ext/hash/indifferent_access"
 
 module Zen
   module Search

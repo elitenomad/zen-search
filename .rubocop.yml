@@ -1,5 +1,18 @@
 AllCops:
   TargetRubyVersion: 2.6
+  SuggestExtensions: false
+  Exclude:
+    - 'spec/**/*'
+    - '**/*_spec.rb'
+    - 'zen-search.gemspec'
+    - 'lib/zen/search/cli.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+Lint/BooleanSymbol:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
 
 Style/StringLiterals:
   Enabled: true
@@ -11,3 +24,10 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Max: 100
+
+Metrics/AbcSize:
+  Max: 20
+

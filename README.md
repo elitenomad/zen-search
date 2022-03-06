@@ -138,6 +138,13 @@ rake spec
             - finding by Tags O(1)
             - finding by created_at O(TotalNoOfTickets)
 - Command Line UI design is based on specification document.
+- Validations to the input are injected using `tty-prompt` gem internal methods
+    - User
+        - ID can be a number and required
+        - Name is required field
+        - Verfied is bool field (t, f, true or false)
+        - Created_at default to Date.Today
+    - Ticket
 - APIs where the value passed is nil and validations (TODO)
     - Ticket assigned ID blank
     - Tags are blank
@@ -154,7 +161,7 @@ rake spec
    output is displayed, the tool will reset to the first option of `Search Zendesk`
 6. Took liberty to establish relationship between entities. 
 7. Ensure Validations around the files and the attributes provided (TODO)
-8. Pagination is something i wanted to consider but ended up not implementing it in the end.
+8. Pagination is something i wanted to consider. I am displaying the total output currently with the design
 9. Found it tricky to implement indexing for created_at, group by dates and write range queries. Due to limited time i am sticking with total lookup of the records 
    when queried by date.
 

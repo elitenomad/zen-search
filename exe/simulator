@@ -11,7 +11,7 @@ puts "Select 'quit' to exit at any time, Press 'Enter' to continue with option s
 puts "\n\n"
 
 begin
-  files = ['data/users.json', 'data/tickets.json']
+  files = ["data/users.json", "data/tickets.json"]
   cli.run(files)
 rescue Errno::ENOENT => e
   puts e.message.to_s
