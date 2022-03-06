@@ -113,6 +113,7 @@ rake spec
     - To ensure the gem could be used for API wrappers in future.
 - Use `tty-prompt` to have interactive selection of options.
 - Use `tty-table` to print the result in human readable format (Used :ascii option).
+- Use `tty-pager` to create basic pagination.
 - Use `pry` to debug the issues.
 - Use `rubocop` to maintain development standard guide.
 - When simulator is started.
@@ -122,7 +123,11 @@ rake spec
         - Ticket belongs to a User
     - Indexes the data
         - UserIndex 
+            - Indexes created for Full string and tokensized version of a string. 
+            - Didn't create prefix or suffix string indexes.
         - TicketIndex
+            - Indexes created for Full string and tokensized version of a string. 
+            - Didn't create prefix or suffix string indexes.
 - When an option is selected,
     - Lookup both the JSON files and combine the records and display (Brute force)
     - Lookup for the right indexes and display the output.
@@ -152,7 +157,7 @@ rake spec
 
 ## Assumptions
 
-1. Limited to the datasets provided in the problem statement. Data with huge sizes are not explored
+1. Limited to the datasets provided in the problem statement. Datasets with huge sizes are not explored, should be okay as search feature relies on precomputed data.
 2. Assumed all data will be provided in json format.
 2. Assumed all data can fit into memory on a single machine (Based on specification statement).
 3. Any file which has `users` is assumed to have users information.
@@ -160,10 +165,11 @@ rake spec
 5. State is not maintained with option selection in command line. For e.g you choose `View Searchable Fields => Users`, After
    output is displayed, the tool will reset to the first option of `Search Zendesk`
 6. Took liberty to establish relationship between entities. 
-7. Ensure Validations around the files and the attributes provided (TODO)
-8. Pagination is something i wanted to consider. I am displaying the total output currently with the design
+7. Ensure Validations around the files used `tty-prompt` inbuild helpers. Didn't test around the validations set for the custom fields.
+8. Implemented basic pagination using `tty-pager`.
 9. Found it tricky to implement indexing for created_at, group by dates and write range queries. Due to limited time i am sticking with total lookup of the records 
    when queried by date.
+10. Separators in the table is hardcoded to 6. We can make it use customized separator per resource.
 
 ## Scope for Enhancement
 

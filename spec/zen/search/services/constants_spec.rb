@@ -13,7 +13,7 @@ RSpec.describe Zen::Search::Services::Constants do
     it "is expected to return ticket attributes" do
       expect(
         subject::TICKET_ATTRIBUTES
-      ).to eq(%w[_id type subject assignee_id tag created_at])
+      ).to eq(%w[_id type subject assignee_id tags created_at])
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe Zen::Search::Services::Constants do
     it "is expected to return print ticket attributes" do
       expect(
         subject::TICKET_PRINT_ATTRIBUTES
-      ).to eq(%w[_id type subject assignee_id assignee_name tag created_at])
+      ).to eq(%w[_id type subject assignee_id assignee_name tags])
     end
   end
 end

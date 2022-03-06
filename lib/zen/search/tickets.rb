@@ -49,7 +49,7 @@ module Zen
         end
 
         def attributes
-          @options.keys + [:assignee_name]
+          Zen::Search::Services::Constants::TICKET_PRINT_ATTRIBUTES
         end
       end
 

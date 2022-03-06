@@ -30,7 +30,7 @@ module Zen
         end
       end
 
-      def run(files, _instructions = [])
+      def run(files)
         # setup and load collections
         load(files)
 
@@ -126,8 +126,8 @@ module Zen
             date = prompt.ask("Enter search value", default: Date.today, convert: :date)
             @service.display_tickets_from_date(date)
           when "subject"
-            id = prompt.enum_select("Enter search value", choices = %w[true false], convert: :bool)
-            @service.display_verified_users(id)
+            id = prompt.ask("Enter search value")
+            @service.display_tickets_by_subject(id)
           when "assignee_id"
             assignee_id = prompt.ask("Enter search value", default: "", convert: :int)
             @service.display_tickets_by_assignee_id(assignee_id)

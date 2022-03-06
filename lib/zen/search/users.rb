@@ -45,7 +45,7 @@ module Zen
         end
 
         def attributes
-          @options.keys + [:tickets]
+          Zen::Search::Services::Constants::USER_ATTRIBUTES
         end
       end
 

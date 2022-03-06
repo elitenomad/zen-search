@@ -25,7 +25,7 @@ RSpec.describe Zen::Search::Parse do
 
     describe "when file is not present" do
       it "is expected to raise FileNotExistsError" do
-        path = "#{File.dirname(__FILE__)}/../../support/test.json"
+        path = "#{File.dirname(__FILE__)}/../../support/testy.json"
         expect { subject.run(path) }.to raise_error(Zen::Search::FileNotExistsError)
       end
     end
