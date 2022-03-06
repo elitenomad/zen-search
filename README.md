@@ -21,9 +21,11 @@
 
 ### Input data
 
+```
 ├── data 
 │   ├── tickets.json
 │   ├── users.json
+```
 
 ## Development or Installation
 
@@ -158,10 +160,10 @@ rake spec
         - Tags Array(string) || []
         - Created_at default to Date.Today. wrong format will complain on the command line (tty-prompt function)  
 
-- APIs where the value passed is nil and validations (TODO)
-    - Ticket assigned ID blank
-    - Tags are blank
-    - Type tickets
+- APIs where the value passed is nil
+    - User `verified` can have nil values
+    - Ticket `type` can have nil values
+    - Ticket `assignee_id` can have nil values
 
 ## Assumptions
 
