@@ -4,10 +4,10 @@
 
 # Prerequistes
 
-    Data available as 
-       1. tickets.json
-       2. users.json
-
+    - Ruby 2.6+ (Tested with 2.7.2)
+    - Ensure data is available as 
+       - tickets.json
+       - users.json
 # Goal statements (From specification PDF)
 
    1. Feel free to use libraries or roll your own code as you see fit. However, please do not use a
