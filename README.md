@@ -44,9 +44,30 @@ bin/setup
 ```
 
 - After checking out the repo, run `bin/setup` to install dependencies.
-- Then, run `rake spec` to run the tests. 
+- Then, run `rspec spec/` to run the tests. 
 - You can also run `bin/console` for an interactive prompt that will allow you to experiment.
     
+
+## Usage
+
+Note: Ensure latest ruby is installed on the system.
+
+1. Unzip the zen-search.zip
+2. cd zen-search
+3. Run simulator with filename as argument.
+4. `chmod ugo+x exe/simulator` (not required, in case its not recognised as a script)
+
+```
+cd zen-search
+./exe/simulator
+
+```
+## Test
+
+```
+rspec spec/
+```
+
 ## Directory structure
 
 ```
@@ -126,31 +147,6 @@ bin/setup
 └── zen-search.gemspec
 
 17 directories, 59 files
-```
-
-## Usage
-
-Note: Ensure latest ruby is installed on the system.
-
-1. Unzip the zen-search.zip
-2. cd zen-search
-3. Run simulator with filename as argument.
-4. `chmod ugo+x exe/simulator` (not required, in case its not recognised as a script)
-
-```
-./exe/simulator
-
-```
-## Test
-
-```
-rspec spec/
-```
-
-or
-
-```
-rake spec
 ```
 # Design and Considerations
 
