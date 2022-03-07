@@ -11,7 +11,7 @@ module Zen
           user = user_index.id_index[id]
           return [] if user.nil?
 
-          return [user]
+          [user]
         end
 
         def self.find_by_name(user_index, name)

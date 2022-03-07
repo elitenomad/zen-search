@@ -30,4 +30,14 @@ Metrics/MethodLength:
 
 Metrics/AbcSize:
   Max: 20
+  Exclude:
+     - 'lib/zen/search/services/print.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude: 
+    - 'lib/zen/search/services/print.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'lib/zen/search/services/print.rb'
 

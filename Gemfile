@@ -15,6 +15,6 @@ gem "mutations", "~> 0.9.1"
 
 gem "pry", "~> 0.13.1"
 
+gem "tty-pager", "~> 0.14.0"
 gem "tty-prompt", "~> 0.23.1"
 gem "tty-table", "~> 0.12.0"
-gem "tty-pager", "~> 0.14.0"

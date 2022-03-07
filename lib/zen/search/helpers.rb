@@ -36,8 +36,9 @@ module Zen
       end
 
       def self.nillify_string(val)
-        return nil if val == "nil" || val == ""
-        return val
+        return nil if val == "nil"
+
+        val
       end
     end
   end

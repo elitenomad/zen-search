@@ -8,7 +8,7 @@ module Zen
     module Services
       class Print
         def self.list(values)
-          if values.size <= 0 
+          if values.size <= 0
             puts "No results found"
             return
           end
@@ -22,17 +22,17 @@ module Zen
         end
 
         def self.objects(results)
-          if results.size <= 0 
+          if results.size <= 0
             puts "No results found"
             return
           end
 
-          prompt = -> (page) { "Page -#{page_num}- Press enter to continue" }
+          prompt = ->(_page) { "Page -#{page_num}- Press enter to continue" }
           pager = TTY::Pager.new(width: 250, prompt: prompt)
           begin
             headers = results&.first&.attributes || []
             table = TTY::Table.new(header: headers)
-            
+
             results.each do |result|
               cols = []
               headers.each do |header|
@@ -45,7 +45,7 @@ module Zen
 
             # Just hard coded based on max attributes for a resource
             table_renderer = table.render(:ascii) do |renderer|
-              renderer.border.separator = ->(row) { row != 0 && (row+1) % 6 == 0}
+              renderer.border.separator = ->(row) { row != 0 && ((row + 1) % 6).zero? }
             end
 
             pager.puts table_renderer

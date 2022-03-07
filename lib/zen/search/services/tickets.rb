@@ -10,8 +10,8 @@ module Zen
         def self.find_by_id(ticket_index, id)
           ticket = ticket_index.id_index[id]
           return [] if ticket.nil?
-          
-          return [ticket]
+
+          [ticket]
         end
 
         def self.find_by_assignee_id(ticket_index, assignee_id)

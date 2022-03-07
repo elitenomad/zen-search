@@ -175,7 +175,7 @@ rake spec
 5. State is not maintained with option selection in command line. For e.g you choose `View Searchable Fields => Users`, After
    output is displayed, the tool will reset to the first option of `Search Zendesk`
 6. Took liberty to establish relationship between entities. 
-7. Ensure Validations around the files used `tty-prompt` inbuild helpers. Didn't test around the validations set for the custom fields.
+7. Ensured Validations around the files using `tty-prompt` inbuild helpers. Didn't test around the validations set for the custom fields.
 8. Implemented basic pagination using `tty-pager`.
 9. Found it tricky to implement indexing for created_at, group by dates and write range queries. Due to limited time i am sticking with total lookup of the records 
    when queried by date.
@@ -186,6 +186,10 @@ rake spec
 - Used a `tty-table` to display the output to terminal. Used a basic option and didn't explore advanced options in it to improve it.
 - Could have used a gem called `mutations` to have schema based services. Tried to acheive the functionality with ruby classes but would have been a nice addition.
 - Rubocop script is manually run, could be automated onto git lifecycle hooks to run before we commit the code.
+- Custom Error and Validation wrappers instead of relying on `tty-prompt` and `tty-table` gems. Would have made it nicer to test them as well.
+- `tty-pager` displays output based on the size of the screen used to run the simulator. 
+   Explore more options from the gem to make it consistent and independent of the device width
+- Persisting states and back and forward actions to go with in the command line would be good :) (Instead of starting over everytime)
 
 ## Local terminal output
 
