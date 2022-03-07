@@ -50,6 +50,7 @@ bin/setup
 ## Directory structure
 
 ```
+.
 ├── CHANGELOG.md
 ├── Gemfile
 ├── Gemfile.lock
@@ -68,20 +69,63 @@ bin/setup
 │       ├── search
 │       │   ├── cli.rb
 │       │   ├── generate
+│       │   │   ├── indexer.rb
+│       │   │   ├── ticket_indexer.rb
+│       │   │   └── user_indexer.rb
+│       │   ├── helpers.rb
 │       │   ├── loader.rb
 │       │   ├── parse.rb
 │       │   ├── services
+│       │   │   ├── constants.rb
 │       │   │   ├── core.rb
 │       │   │   ├── fields.rb
 │       │   │   ├── print.rb
 │       │   │   ├── tickets.rb
 │       │   │   └── users.rb
 │       │   ├── tickets.rb
+│       │   ├── updater.rb
 │       │   ├── users.rb
 │       │   └── version.rb
 │       └── search.rb
 ├── spec
+│   ├── spec_helper.rb
+│   ├── support
+│   │   ├── mock.rb
+│   │   ├── stringio_patch.rb
+│   │   ├── test.json
+│   │   ├── tickets.json
+│   │   └── users.json
+│   └── zen
+│       ├── search
+│       │   ├── cli_spec.rb
+│       │   ├── generate
+│       │   │   ├── indexer_spec.rb
+│       │   │   ├── ticket_indexer_spec.rb
+│       │   │   └── user_indexer_spec.rb
+│       │   ├── helpers_spec.rb
+│       │   ├── loader_spec.rb
+│       │   ├── parse_spec.rb
+│       │   ├── services
+│       │   │   ├── constants_spec.rb
+│       │   │   ├── core_spec.rb
+│       │   │   ├── fields_spec.rb
+│       │   │   ├── print_spec.rb
+│       │   │   ├── tickets_spec.rb
+│       │   │   └── users_spec.rb
+│       │   ├── tickets_spec.rb
+│       │   ├── updater_spec.rb
+│       │   └── users_spec.rb
+│       └── search_spec.rb
+├── usage
+│   ├── enter-id.png
+│   ├── search-zen.png
+│   ├── simulator-demo.mov
+│   ├── start.png
+│   ├── user-results.png
+│   └── users-options.png
 └── zen-search.gemspec
+
+17 directories, 59 files
 ```
 
 ## Usage
