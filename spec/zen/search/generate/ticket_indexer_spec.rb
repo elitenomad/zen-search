@@ -2,7 +2,7 @@
 
 RSpec.describe Zen::Search::Generate::TicketIndexer do
   let(:tickets) { ZenSearchTestHelper::Mock.new.tickets }
-  let(:ticket_collection) { Zen::Search::Tickets.new(tickets) }
+  let(:ticket_collection) { Zen::Search::Resources::Tickets.new(tickets) }
   let(:subject) { Zen::Search::Generate::TicketIndexer.new(ticket_collection) }
 
   context "#index!" do

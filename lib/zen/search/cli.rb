@@ -40,7 +40,7 @@ module Zen
         # setup indexes (user, ticket)
         indexer = Zen::Search::Generate::Indexer.new(@user_collection, @ticket_collection)
         uIndex, tIndex = indexer.index!
-        # binding.pry
+        
         # Make indexes available to Main service class (Acts like a controller)
         @service = Zen::Search::Services::Core.new(uIndex, tIndex)
 
@@ -94,19 +94,19 @@ module Zen
               q.validate(/\A\d+\Z/, "Invalid ID")
             end
 
-            @service.display_user_by_id(id.to_i)
+            @service.search_user({id: id.to_i})
           when "name"
             name = prompt.ask("Enter search value") do |q|
               q.required true
             end
 
-            @service.display_user_by_name(name)
+            @service.search_user({name: name})
           when "created_at"
             date = prompt.ask("Enter search value", default: Date.today, convert: :date)
-            @service.display_users_from_date(date)
+            @service.search_user({created_at: date})
           when "verified"
-            id = prompt.enum_select("Enter search value", choices = %w[true false nil], convert: :sym)
-            @service.display_verified_users(id)
+            verified = prompt.enum_select("Enter search value", choices = %w[true false nil], convert: :sym)
+            @service.search_user({verified: verified})
           end
         end
 
@@ -117,22 +117,22 @@ module Zen
               q.required true
             end
 
-            @service.display_ticket_by_id(id)
+            @service.search_ticket({id: id})
           when "type"
             type = prompt.enum_select("Enter search value", choices = %w[incident problem question task nil])
-            @service.display_tickets_by_type(Zen::Search::Helpers.nillify_string(type))
+            @service.search({type: Zen::Search::Helpers.nillify_string(type)})
           when "created_at"
             date = prompt.ask("Enter search value", default: Date.today, convert: :date)
-            @service.display_tickets_from_date(date)
+            @service.search_ticket({created_at: date})
           when "subject"
             id = prompt.ask("Enter search value")
-            @service.display_tickets_by_subject(id)
+            @service.search_ticket({subject: id})
           when "assignee_id"
             assignee_id = prompt.ask("Enter search value", default: nil, convert: :int)
-            @service.display_tickets_by_assignee_id(assignee_id)
+            @service.search_ticket({assignee_id: assignee_id})
           when "tags"
             tag = prompt.ask("Enter search value", default: "")
-            @service.display_tickets_by_tag(tag)
+            @service.search_ticket({tag: tag})
           end
         end
       end

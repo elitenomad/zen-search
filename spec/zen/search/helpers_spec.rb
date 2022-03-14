@@ -28,7 +28,7 @@ RSpec.describe Zen::Search::Helpers do
     end
 
     # Testing for a user index only to keep tests simple
-    let(:user) { Zen::Search::User.new(options) }
+    let(:user) { Zen::Search::Resources::User.new(options) }
 
     it "is expected to capture the document against the given name" do
       subject.text_index(user, user.name, idx)
@@ -48,7 +48,7 @@ RSpec.describe Zen::Search::Helpers do
     end
 
     # Testing for a user index only to keep tests simple
-    let(:user) { Zen::Search::User.new(options) }
+    let(:user) { Zen::Search::Resources::User.new(options) }
 
     it "is expected to capture the document against the given name" do
       subject.tokenized_index(user, user.name, idx)

@@ -3,8 +3,8 @@
 # test.rb
 require "pry"
 require_relative "search/version"
-require "zen/search/users"
-require "zen/search/tickets"
+require "zen/search/resources/users"
+require "zen/search/resources/tickets"
 require "zen/search/helpers"
 require "zen/search/parse"
 require "zen/search/loader"

@@ -7,8 +7,8 @@ RSpec.describe Zen::Search::Loader do
     let(:users) { ZenSearchTestHelper::Mock.new.users }
     let(:tickets) { ZenSearchTestHelper::Mock.new.tickets }
 
-    let(:expected_user_collection) { Zen::Search::Users.new(users) }
-    let(:expected_tickets_collection) { Zen::Search::Tickets.new(tickets) }
+    let(:expected_user_collection) { Zen::Search::Resources::Users.new(users) }
+    let(:expected_tickets_collection) { Zen::Search::Resources::Tickets.new(tickets) }
 
     describe "when called with Users" do
       it "is expected to return user collection" do

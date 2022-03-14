@@ -2,7 +2,7 @@
 
 RSpec.describe Zen::Search::Generate::UserIndexer do
   let(:users) { ZenSearchTestHelper::Mock.new.users }
-  let(:user_collection) { Zen::Search::Users.new(users) }
+  let(:user_collection) { Zen::Search::Resources::Users.new(users) }
   let(:subject) { Zen::Search::Generate::UserIndexer.new(user_collection) }
 
   context "#index!" do

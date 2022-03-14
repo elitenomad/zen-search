@@ -38,7 +38,7 @@ RSpec.describe Zen::Search::Services::Print do
   # So tested only if the Library class is called when we execute `objects` method
   describe ".objects" do
     let(:users) { ZenSearchTestHelper::Mock.new.users }
-    let(:user_collection) { Zen::Search::Users.new(users) }
+    let(:user_collection) { Zen::Search::Resources::Users.new(users) }
 
     context 'when results is not empty' do
       it "is expected to return values to stdout" do

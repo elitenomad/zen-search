@@ -6,8 +6,8 @@ RSpec.describe Zen::Search::Updater do
   context ".run" do
     let(:users) { ZenSearchTestHelper::Mock.new.users }
     let(:tickets) { ZenSearchTestHelper::Mock.new.tickets }
-    let(:user_collection) { Zen::Search::Users.new(users) }
-    let(:ticket_collection) { Zen::Search::Tickets.new(tickets) }
+    let(:user_collection) { Zen::Search::Resources::Users.new(users) }
+    let(:ticket_collection) { Zen::Search::Resources::Tickets.new(tickets) }
 
     before(:each) do
       subject.run(user_collection, ticket_collection)

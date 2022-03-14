@@ -35,7 +35,7 @@ RSpec.describe Zen::Search::Services::Core do
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_user_by_id(1)
+          subject.search_user({id: 1})
         end
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe Zen::Search::Services::Core do
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_user_by_name("francisca")
+          subject.search_user({name: "francisca"})
         end
       end
     end
@@ -60,12 +60,12 @@ RSpec.describe Zen::Search::Services::Core do
         it "is expected to call find_verified_users and objects method" do
           expect(
             Zen::Search::Services::Users
-          ).to receive(:find_verified_users).with(indexes[0], true)
+          ).to receive(:find_by_verified).with(indexes[0], true)
           expect(
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_verified_users(true)
+          subject.search_user({verified: true})
         end
       end
     end
@@ -76,12 +76,12 @@ RSpec.describe Zen::Search::Services::Core do
         it "is expected to call find_after_date and objects method" do
           expect(
             Zen::Search::Services::Users
-          ).to receive(:find_after_date).with(indexes[0], time)
+          ).to receive(:find_by_created_at).with(indexes[0], time)
           expect(
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_users_from_date(time)
+          subject.search_user({created_at: time})
         end
       end
     end
@@ -98,7 +98,7 @@ RSpec.describe Zen::Search::Services::Core do
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_ticket_by_id(1)
+          subject.search_ticket({id: 1})
         end
       end
     end
@@ -113,7 +113,7 @@ RSpec.describe Zen::Search::Services::Core do
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_tickets_by_type("problem")
+          subject.search_ticket({type: "problem"})
         end
       end
     end
@@ -128,7 +128,7 @@ RSpec.describe Zen::Search::Services::Core do
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_tickets_by_subject("no problemo")
+          subject.search_ticket({subject: "no problemo"})
         end
       end
     end
@@ -140,12 +140,12 @@ RSpec.describe Zen::Search::Services::Core do
         it "is expected to call find_after_date and objects method" do
           expect(
             Zen::Search::Services::Tickets
-          ).to receive(:find_after_date).with(indexes[1], time)
+          ).to receive(:find_by_created_at).with(indexes[1], time)
           expect(
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_tickets_from_date(time)
+          subject.search_ticket({created_at: time})
         end
       end
     end
@@ -160,7 +160,7 @@ RSpec.describe Zen::Search::Services::Core do
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_tickets_by_assignee_id(1)
+          subject.search_ticket({assignee_id: 1})
         end
       end
     end
@@ -175,7 +175,7 @@ RSpec.describe Zen::Search::Services::Core do
             Zen::Search::Services::Print
           ).to receive(:objects)
 
-          subject.display_tickets_by_tag("tag")
+          subject.search_ticket({tag: "tag"})
         end
       end
     end

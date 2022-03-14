@@ -8,9 +8,9 @@ module Zen
       def self.run(data, type = nil)
         case type
         when "Users"
-          Zen::Search::Users.new(data)
+          Zen::Search::Resources::Users.new(data)
         when "Tickets"
-          Zen::Search::Tickets.new(data)
+          Zen::Search::Resources::Tickets.new(data)
         end
       end
     end

@@ -3,8 +3,8 @@
 RSpec.describe Zen::Search::Generate::Indexer do
   let(:users) { ZenSearchTestHelper::Mock.new.users }
   let(:tickets) { ZenSearchTestHelper::Mock.new.tickets }
-  let(:user_collection) { Zen::Search::Users.new(users) }
-  let(:ticket_collection) { Zen::Search::Tickets.new(tickets) }
+  let(:user_collection) { Zen::Search::Resources::Users.new(users) }
+  let(:ticket_collection) { Zen::Search::Resources::Tickets.new(tickets) }
   let(:subject) { Zen::Search::Generate::Indexer.new(user_collection, ticket_collection) }
 
   context "#index!" do
